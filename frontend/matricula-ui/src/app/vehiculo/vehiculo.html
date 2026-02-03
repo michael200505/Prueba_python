@@ -1,0 +1,53 @@
+<h2>Matrícula Vehicular</h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <input formControlName="placa" placeholder="Placa (ABC-1234)" />
+  <br /><br />
+
+  <input formControlName="propietario" placeholder="Propietario" />
+  <br /><br />
+
+  <input formControlName="marca" placeholder="Marca" />
+  <br /><br />
+
+  <input type="number" formControlName="fabricacion" placeholder="Año fabricación" />
+  <br /><br />
+
+  <input type="number" formControlName="valor_comercial" placeholder="Valor comercial" />
+  <br /><br />
+
+  <button type="submit">Guardar</button>
+</form>
+
+<p style="color:red" *ngIf="error">{{ error }}</p>
+
+<hr />
+
+<table border="1" cellpadding="6" width="100%">
+  <thead>
+    <tr>
+      <th>Placa</th>
+      <th>Propietario</th>
+      <th>Marca</th>
+      <th>Año</th>
+      <th>Valor</th>
+      <th>Impuesto</th>
+      <th>Código</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let v of vehiculos" [style.border]="peligro(v) ? '2px solid orange' : ''">
+      <td>
+        <span *ngIf="peligro(v)">⚠️</span>
+        {{ v.placa }}
+      </td>
+      <td>{{ v.propietario }}</td>
+      <td>{{ v.marca }}</td>
+      <td>{{ v.fabricacion }}</td>
+      <td>{{ v.valor_comercial }}</td>
+      <td>{{ v.impuesto }}</td>
+      <td>{{ v.codigo_revision }}</td>
+    </tr>
+  </tbody>
+</table>

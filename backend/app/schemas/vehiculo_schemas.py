@@ -10,3 +10,5 @@ class VehiculoIn(BaseModel):
 class VehiculoOut(VehiculoIn):
     impuesto: float
     codigo_revision: str
+
+
